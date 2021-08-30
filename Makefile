@@ -17,3 +17,11 @@ http-curl-test:
 	curl --location --request POST 'http://localhost:8080/getCompany' \
     --header 'Content-Type: application/json' \
     --data-raw '{"inn": "7736207543"}'
+
+
+prepare:
+	docker network create -d bridge rusprofile
+
+start:
+	docker-compose -f docker-compose.grpc.yml up -d
+	docker-compose -f docker-compose.http.yml up -d
