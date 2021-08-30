@@ -22,7 +22,7 @@ func main() {
 
 	mux := runtime.NewServeMux()
 	opts := []grpc.DialOption{grpc.WithInsecure()}
-	err = grpc2.RegisterRusprofileHandlerFromEndpoint(ctx, mux, "grpc:"+cfg.Grpc.Port, opts)
+	err = grpc2.RegisterRusprofileHandlerFromEndpoint(ctx, mux, "localhost:"+cfg.Grpc.Port, opts)
 	if err != nil {
 		log.Fatal(err)
 	}

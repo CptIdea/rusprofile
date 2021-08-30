@@ -1,9 +1,5 @@
 version: '3'
 
-networks:
-  main:
-    driver: bridge
-
 services:
   grpcserver:
     build:
@@ -14,10 +10,7 @@ services:
       GRPC_PORT: "8090"
     ports:
       - "8090:8090"
-    networks:
-      main:
-        aliases:
-          - grpc
+    network_mode: host
   httpserver:
     build:
       context: ./
