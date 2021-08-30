@@ -1,0 +1,29 @@
+version: '3'
+
+networks:
+  main:
+    driver: bridge
+
+services:
+  grpcserver:
+    build:
+      context: ./
+      dockerfile: ./docker/grpc/Dockerfile
+    environment:
+      RUSPROFILE_HOST: "https://www.rusprofile.ru/search"
+      GRPC_PORT: "8090"
+    ports:
+      - "8090:8090"
+    networks:
+      main:
+        aliases:
+          - grpc
+  httpserver:
+    build:
+      context: ./
+      dockerfile: ./docker/http/Dockerfile
+    environment:
+      HTTP_PORT: "8080"
+      GRPC_PORT: "8090"
+    ports:
+      - "8080:8080"
