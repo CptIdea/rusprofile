@@ -1,4 +1,4 @@
-## grpc сервер + http gateway для
+## grpc сервер + http gateway для rusprofile
 ___
 ### Запуск
 
